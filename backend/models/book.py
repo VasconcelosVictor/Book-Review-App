@@ -1,5 +1,5 @@
 from db import db
-from sqlalchemy.orm import relationship
+from models.review import ReviewModel 
 
 class BookModel(db.Model):
   __tablename__ = 'books'
@@ -8,7 +8,7 @@ class BookModel(db.Model):
   title = db.Column(db.String(100), nullable=False)
   author = db.Column(db.String(100), nullable=False)
   description = db.Column(db.Text, nullable=True)
-  reviews = db.relationship('ReviewModel', back_populates='book')
+  reviews = db.relationship('ReviewModel', backref='book', lazy=True)
 
   def json(self, ):
     return {

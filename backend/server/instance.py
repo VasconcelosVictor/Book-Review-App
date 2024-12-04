@@ -1,5 +1,6 @@
 from flask import Flask, Blueprint
 from flask_restx import Api
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,6 +19,7 @@ class Server():
         self.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         self.app.config['PROPAGATE_EXCEPTIONS'] = True
+        
 
         self.book_ns = self.book_ns()
 
